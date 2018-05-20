@@ -73,7 +73,7 @@ csprng_engine::save_state (std::string const& file)
 void
 csprng_engine::mix_entropy (void* buffer, std::size_t count)
 {
-    std::array<std::random_device::result_type, 128> entropy;
+    std::array<std::random_device::result_type, 128> entropy{};
 
     {
         // On every platform we support, std::random_device

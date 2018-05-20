@@ -49,7 +49,7 @@ class digest_test : public beast::unit_test::suite
             }
         }
 
-        std::array<nanoseconds, 128> results;
+        std::array<nanoseconds, 128> results{};
 
         for (auto& result : results)
         {

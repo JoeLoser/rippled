@@ -35,7 +35,7 @@ public:
         testcase("encode, decode");
         for (auto const v : vv)
         {
-            std::array<std::uint8_t, varint_traits<std::size_t>::max> vi;
+            std::array<std::uint8_t, varint_traits<std::size_t>::max> vi{};
             auto const n0 = write_varint(vi.data(), v);
             expect (n0 > 0, "write error");
             expect(n0 == size_varint(v), "size error");

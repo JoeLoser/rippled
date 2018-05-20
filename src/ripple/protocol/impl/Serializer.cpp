@@ -302,7 +302,7 @@ bool Serializer::getVLLength (int& length, int offset) const
 
 int Serializer::addEncoded (int length)
 {
-    std::array<std::uint8_t, 4> bytes;
+    std::array<std::uint8_t, 4> bytes{};
     int numBytes = 0;
 
     if (length <= 192)

@@ -80,7 +80,7 @@ private:
     {
         bool replied;
         sys_seconds sent;
-        std::uint32_t nonce;
+        std::uint32_t nonce{};
 
         Query (sys_seconds j = sys_seconds::max())
             : replied (false)

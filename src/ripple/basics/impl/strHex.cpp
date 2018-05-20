@@ -27,7 +27,7 @@ int charUnHex (unsigned char c)
 {
     struct HexTab
     {
-        int hex[256];
+        int hex[256]{};
 
         HexTab ()
         {

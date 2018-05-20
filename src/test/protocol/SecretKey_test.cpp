@@ -43,7 +43,7 @@ public:
     {
         struct Table
         {
-            int val[256];
+            int val[256]{};
             Table ()
             {
                 std::fill (val, val+256, 0);
@@ -393,7 +393,7 @@ public:
         }
 
         // Try some random secret keys
-        std::array <SecretKey, 32> keys;
+        std::array <SecretKey, 32> keys{};
 
         for (std::size_t i = 0; i != keys.size(); ++i)
             keys[i] = randomSecretKey();
@@ -439,7 +439,7 @@ public:
         SecretKey sk2 (sk1);
         BEAST_EXPECT(sk1 == sk2);
 
-        SecretKey sk3;
+        SecretKey sk3{};
         BEAST_EXPECT(sk3 != sk2);
         sk3 = sk2;
         BEAST_EXPECT(sk3 == sk2);

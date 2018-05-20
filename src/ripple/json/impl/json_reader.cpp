@@ -120,7 +120,7 @@ Reader::parse ( const char* beginDoc, const char* endDoc,
 
     nodes_.push ( &root );
     bool successful = readValue(0);
-    Token token;
+    Token token{};
     skipCommentTokens ( token );
 
     if ( !root.isNull() && !root.isArray() && !root.isObject() )
@@ -140,7 +140,7 @@ Reader::parse ( const char* beginDoc, const char* endDoc,
 bool
 Reader::readValue(unsigned depth)
 {
-    Token token;
+    Token token{};
     skipCommentTokens ( token );
     if (depth > nest_limit)
         return addError("Syntax error: maximum nesting depth exceeded", token);
@@ -431,7 +431,7 @@ Reader::readString ()
 bool
 Reader::readObject(Token& tokenStart, unsigned depth)
 {
-    Token tokenName;
+    Token tokenName{};
     std::string name;
     currentValue () = Value ( objectValue );
 
@@ -456,7 +456,7 @@ Reader::readObject(Token& tokenStart, unsigned depth)
         if ( !decodeString ( tokenName, name ) )
             return recoverFromError ( tokenObjectEnd );
 
-        Token colon;
+        Token colon{};
 
         if ( !readToken ( colon ) ||  colon.type_ != tokenMemberSeparator )
         {
@@ -477,7 +477,7 @@ Reader::readObject(Token& tokenStart, unsigned depth)
         if ( !ok ) // error already set
             return recoverFromError ( tokenObjectEnd );
 
-        Token comma;
+        Token comma{};
 
         if ( !readToken ( comma )
                 ||  ( comma.type_ != tokenObjectEnd  &&
@@ -513,7 +513,7 @@ Reader::readArray(Token& tokenStart, unsigned depth)
 
     if ( *current_ == ']' ) // empty array
     {
-        Token endArray;
+        Token endArray{};
         readToken ( endArray );
         return true;
     }
@@ -530,7 +530,7 @@ Reader::readArray(Token& tokenStart, unsigned depth)
         if ( !ok ) // error already set
             return recoverFromError ( tokenArrayEnd );
 
-        Token token;
+        Token token{};
         // Accept Comment after last item in the array.
         ok = readToken ( token );
 
@@ -838,7 +838,7 @@ bool
 Reader::recoverFromError ( TokenType skipUntilToken )
 {
     int errorCount = int (errors_.size ());
-    Token skip;
+    Token skip{};
 
     while ( true )
     {

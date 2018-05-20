@@ -1032,7 +1032,7 @@ PeerImp::onMessage (std::shared_ptr <protocol::TMEndpoints> const& m)
         // ipv4
         if (endpoint.hops > 0)
         {
-            in_addr addr;
+            in_addr addr{};
             addr.s_addr = tm.ipv4().ipv4();
             beast::IP::AddressV4 v4 (ntohl (addr.s_addr));
             endpoint.address = beast::IP::Endpoint (v4, tm.ipv4().ipv4port ());

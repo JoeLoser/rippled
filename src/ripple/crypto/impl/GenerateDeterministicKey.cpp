@@ -88,7 +88,7 @@ static bignum generateRootDeterministicKey (uint128 const& seed)
     {
         // buf: 0                seed               16  seq  20
         //      |<--------------------------------->|<------>|
-        std::array<std::uint8_t, 20> buf;
+        std::array<std::uint8_t, 20> buf{};
         std::copy(seed.begin(), seed.end(), buf.begin());
         copy_uint32 (buf.begin() + 16, seq++);
         auto root = sha512Half(buf);
@@ -146,7 +146,7 @@ static bignum makeHash (Blob const& pubGen, int seq, bignum const& order)
     {
         // buf: 0          pubGen             33 seq   37 subSeq  41
         //      |<--------------------------->|<------>|<-------->|
-        std::array<std::uint8_t, 41> buf;
+        std::array<std::uint8_t, 41> buf{};
         std::copy (pubGen.begin(), pubGen.end(), buf.begin());
         copy_uint32 (buf.begin() + 33, seq);
         copy_uint32 (buf.begin() + 37, subSeq++);

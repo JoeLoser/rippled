@@ -504,7 +504,7 @@ public:
 private:
     using pointer = std::shared_ptr<HTTPClient>;
 
-    bool                                                        mSSL;
+    bool                                                        mSSL{};
     AutoSocket                                                  mSocket;
     boost::asio::ip::tcp::resolver                              mResolver;
     std::shared_ptr<boost::asio::ip::tcp::resolver::query>      mQuery;
@@ -514,7 +514,7 @@ private:
     std::string                                                 mBody;
     const unsigned short                                        mPort;
     int                                                         mResponseSize;
-    int                                                         mStatus;
+    int                                                         mStatus{};
     std::function<void (boost::asio::streambuf& sb, std::string const& strHost)>         mBuild;
     std::function<bool (const boost::system::error_code& ecResult, int iStatus, std::string const& strData)> mComplete;
 
@@ -524,7 +524,7 @@ private:
     boost::system::error_code                                   mShutdown;
 
     std::deque<std::string>                                     mDeqSites;
-    std::chrono::seconds                                        mTimeout;
+    std::chrono::seconds                                        mTimeout{};
     beast::Journal                                              j_;
 };
 

@@ -186,7 +186,7 @@ Database::doFetch(uint256 const& hash, std::uint32_t seq,
     TaggedCache<uint256, NodeObject>& pCache,
         KeyCache<uint256>& nCache, bool isAsync)
 {
-    FetchReport report;
+    FetchReport report{};
     report.isAsync = isAsync;
     report.wentToDisk = false;
 

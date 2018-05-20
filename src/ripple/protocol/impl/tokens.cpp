@@ -270,7 +270,7 @@ decodeBase58Token (std::string const& s,
         return {};
 
     // And the checksum must as well.
-    std::array<char, 4> guard;
+    std::array<char, 4> guard{};
     checksum(guard.data(), ret.data(), ret.size() - guard.size());
     if (!std::equal (guard.rbegin(), guard.rend(), ret.rbegin()))
         return {};
@@ -285,7 +285,7 @@ decodeBase58Token (std::string const& s,
 class InverseAlphabet
 {
 private:
-    std::array<int, 256> map_;
+    std::array<int, 256> map_{};
 
 public:
     explicit

@@ -54,7 +54,7 @@ class StatsDMetricBase : public List <StatsDMetricBase>::Node
 public:
     virtual void do_process () = 0;
     virtual ~StatsDMetricBase() = default;
-    StatsDMetricBase() = default;
+    StatsDMetricBase() = default : ListNode();
     StatsDMetricBase(StatsDMetricBase const&) = delete;
     StatsDMetricBase& operator=(StatsDMetricBase const&) = delete;
 };

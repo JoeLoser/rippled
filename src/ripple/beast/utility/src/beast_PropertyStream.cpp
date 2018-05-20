@@ -32,7 +32,7 @@ namespace beast {
 //------------------------------------------------------------------------------
 
 PropertyStream::Item::Item (Source* source)
-    : m_source (source)
+    : ListNode(), m_source (source)
 {
 }
 

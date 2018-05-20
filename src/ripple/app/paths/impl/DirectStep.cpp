@@ -500,7 +500,7 @@ DirectStepI<TDerived>::revImp (
     cache_.reset ();
 
     bool srcRedeems;
-    IOUAmount maxSrcToDst;
+    IOUAmount maxSrcToDst{};
 
     std::tie (maxSrcToDst, srcRedeems) =
         static_cast<TDerived const*>(this)->maxFlow (sb, out);
@@ -624,7 +624,7 @@ DirectStepI<TDerived>::fwdImp (
     assert (cache_);
 
     bool srcRedeems;
-    IOUAmount maxSrcToDst;
+    IOUAmount maxSrcToDst{};
     std::tie (maxSrcToDst, srcRedeems) =
         static_cast<TDerived const*>(this)->maxFlow (sb, cache_->srcToDst);
 
@@ -710,7 +710,7 @@ DirectStepI<TDerived>::validFwd (
     assert (!in.native);
 
     bool srcRedeems;
-    IOUAmount maxSrcToDst;
+    IOUAmount maxSrcToDst{};
     std::tie (maxSrcToDst, srcRedeems) =
         static_cast<TDerived const*>(this)->maxFlow (sb, cache_->srcToDst);
 

@@ -185,7 +185,7 @@ public:
     void
     store (std::shared_ptr <NodeObject> const& no) override
     {
-        BatchWriteReport report;
+        BatchWriteReport report{};
         report.writeCount = 1;
         auto const start =
             std::chrono::steady_clock::now();
@@ -199,7 +199,7 @@ public:
     void
     storeBatch (Batch const& batch) override
     {
-        BatchWriteReport report;
+        BatchWriteReport report{};
         report.writeCount = batch.size();
         auto const start =
             std::chrono::steady_clock::now();

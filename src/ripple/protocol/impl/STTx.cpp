@@ -447,7 +447,7 @@ isMemoOkay (STObject const& st, std::string& reason)
             // following symbols: -._~:/?#[]@!$&'()*+,;=%
             static std::array<char, 256> const allowedSymbols = []
             {
-                std::array<char, 256> a;
+                std::array<char, 256> a{};
                 a.fill(0);
 
                 std::string symbols (

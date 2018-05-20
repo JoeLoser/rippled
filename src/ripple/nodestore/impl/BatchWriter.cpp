@@ -92,7 +92,7 @@ BatchWriter::writeBatch ()
 
         }
 
-        BatchWriteReport report;
+        BatchWriteReport report{};
         report.writeCount = set.size();
         auto const before = std::chrono::steady_clock::now();
 

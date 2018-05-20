@@ -204,7 +204,7 @@ SHAMapStoreImp::SHAMapStoreImp (
     {
         // The node and shard stores must use
         // the same earliest ledger sequence
-        std::array<std::uint32_t, 2> seq;
+        std::array<std::uint32_t, 2> seq{};
         if (get_if_exists<std::uint32_t>(
             setup_.nodeDatabase, "earliest_seq", seq[0]))
         {

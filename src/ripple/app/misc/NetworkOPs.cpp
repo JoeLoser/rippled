@@ -75,7 +75,7 @@ class NetworkOPsImp final
         bool admin;
         bool local;
         FailHard failType;
-        bool applied;
+        bool applied{};
         TER result;
 
         TransactionStatus (
