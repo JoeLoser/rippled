@@ -35,7 +35,7 @@ namespace ripple {
 class SecretKey
 {
 private:
-    std::uint8_t buf_[32];
+    std::array<std::uint8_t, 32> buf_{};
 
 public:
     SecretKey() = default;
@@ -44,19 +44,24 @@ public:
 
     ~SecretKey();
 
-    SecretKey (std::array<std::uint8_t, 32> const& data);
     SecretKey (Slice const& slice);
 
     std::uint8_t const*
     data() const
     {
-        return buf_;
+        return buf_.data();
+    }
+
+    std::uint8_t*
+    data()
+    {
+        return buf_.data();
     }
 
     std::size_t
     size() const
     {
-        return sizeof(buf_);
+        return buf_.size();
     }
 
     /** Convert the secret key to a hexadecimal string.

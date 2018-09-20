@@ -33,19 +33,14 @@ namespace ripple {
 
 SecretKey::~SecretKey()
 {
-    beast::secure_erase(buf_, sizeof(buf_));
-}
-
-SecretKey::SecretKey (std::array<std::uint8_t, 32> const& key)
-{
-    std::memcpy(buf_, key.data(), key.size());
+    beast::secure_erase(reinterpret_cast<void*>(data()), size());
 }
 
 SecretKey::SecretKey (Slice const& slice)
 {
     if (slice.size() != sizeof(buf_))
         LogicError("SecretKey::SecretKey: invalid size");
-    std::memcpy(buf_, slice.data(), sizeof(buf_));
+    std::memcpy(buf_.data(), slice.data(), buf_.size());
 }
 
 std::string
